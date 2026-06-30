@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import FileList from "./file-list";
 import { Button } from "../ui/button";
-import { uploadFile } from "@/services/storage.service";
-import { createUpload } from "@/app/actions/upload";
+
+import { upload } from "@/services/upload.service";
+
 import UploadSuccess from "./upload-success";
+import { toast } from "sonner";
 
 export default function UploadDropzone() {
     const [files, setFiles] = useState<File[]>([]);
@@ -18,38 +20,36 @@ export default function UploadDropzone() {
     },
   });
 
-const handleUpload = async () => {
-  if (files.length === 0) return;
+  const handleUpload = async () => {
+    if (files.length === 0) return;
 
-  try {
-    setIsUploading(true);
+    try {
+      setIsUploading(true);
 
-    const uploaded = await uploadFile(files[0]);
+      const shareUrl = await upload(files);
+      toast.success("Upload berhasil!");
 
-    const slug = await createUpload({
-      name: files[0].name,
-      path: uploaded.path,
-      size: files[0].size,
-      type: files[0].type,
-    });
+      setShareUrl(shareUrl);
+      setFiles([]);
+    } catch (error) {
+      console.error(error);
 
-    setShareUrl(`${window.location.origin}/s/${slug}`);
-setFiles([]);
-  } catch (error) {
-    console.error(error);
-  } finally {
-    setIsUploading(false);
+      toast.error("Upload gagal", {
+        description: "Terjadi kesalahan saat mengunggah file. Silakan coba lagi.",
+      });
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  if (shareUrl) {
+    return (
+      <UploadSuccess
+        shareUrl={shareUrl}
+        onReset={() => setShareUrl("")}
+      />
+    );
   }
-};
-
-if (shareUrl) {
-  return (
-    <UploadSuccess
-      shareUrl={shareUrl}
-      onReset={() => setShareUrl("")}
-    />
-  );
-}
 
   return (
     <div className="">

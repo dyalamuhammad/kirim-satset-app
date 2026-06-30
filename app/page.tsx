@@ -1,5 +1,4 @@
 import Intro from "@/components/intro";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import UploadDropzone from "@/components/upload/upload-dropzone";
 
