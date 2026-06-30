@@ -2,17 +2,39 @@
 
 import { getDownloadUrl } from "@/app/actions/download";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import { toast } from "sonner";
 
 type Props = {
   path: string;
 };
 
 export default function DownloadButton({ path }: Props) {
-  const handleDownload = async () => {
+    const [loading, setLoading] = useState(false);
+
+
+const handleDownload = async () => {
+  if (loading) return;
+
+  try {
+    setLoading(true);
+
     const url = await getDownloadUrl(path);
 
-    window.location.href = url;
-  };
+    toast.success("Download dimulai.");
 
-  return <Button onClick={handleDownload}>Download</Button>;
+    window.location.href = url;
+  } catch (error) {
+    console.error(error);
+    toast.error("Gagal mengunduh file.");
+  } finally {
+    setLoading(false);
+  }
+};
+
+  return (
+    <Button className="cursor-pointer" onClick={handleDownload} disabled={loading}>
+      {loading ? "Downloading..." : "Download"}
+    </Button>
+  );
 }
