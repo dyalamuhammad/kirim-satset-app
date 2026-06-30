@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 type Props = {
   shareUrl: string;
@@ -13,7 +14,7 @@ export default function UploadSuccess({
 }: Props) {
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);
-    alert("Link berhasil disalin!");
+    toast.success("Link berhasil disalin.");
   };
 
   return (
