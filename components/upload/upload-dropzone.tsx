@@ -6,10 +6,12 @@ import FileList from "./file-list";
 import { Button } from "../ui/button";
 import { uploadFile } from "@/services/storage.service";
 import { createUpload } from "@/app/actions/upload";
+import UploadSuccess from "./upload-success";
 
 export default function UploadDropzone() {
     const [files, setFiles] = useState<File[]>([]);
     const [isUploading, setIsUploading] = useState(false);
+    const [shareUrl, setShareUrl] = useState("");
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop: (acceptedFiles) => {
         setFiles((prev) => [...prev, ...acceptedFiles]);
@@ -31,13 +33,23 @@ const handleUpload = async () => {
       type: files[0].type,
     });
 
-    console.log("Share Link:", `http://localhost:3000/s/${slug}`);
+    setShareUrl(`${window.location.origin}/s/${slug}`);
+setFiles([]);
   } catch (error) {
     console.error(error);
   } finally {
     setIsUploading(false);
   }
 };
+
+if (shareUrl) {
+  return (
+    <UploadSuccess
+      shareUrl={shareUrl}
+      onReset={() => setShareUrl("")}
+    />
+  );
+}
 
   return (
     <div className="">
