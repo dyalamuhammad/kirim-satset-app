@@ -11,7 +11,7 @@ export default function DownloadButton({ path }: Props) {
   const handleDownload = async () => {
     const url = await getDownloadUrl(path);
 
-    window.open(url, "_blank");
+    window.location.href = url;
   };
 
   return <Button onClick={handleDownload}>Download</Button>;
