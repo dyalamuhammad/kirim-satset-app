@@ -1,3 +1,4 @@
+import DownloadButton from "@/components/download/download-button";
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 
@@ -41,9 +42,7 @@ export default async function DownloadPage({ params }: Props) {
           </p>
         </div>
 
-        <button className="rounded-md border px-4 py-2">
-          Download
-        </button>
+        <DownloadButton path={file.storage_path} />
       </div>
     ))}
   </div>
