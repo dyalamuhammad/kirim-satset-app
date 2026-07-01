@@ -1,36 +1,247 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Kirim Satset
 
-## Getting Started
+> **Kirim file dengan cepat, aman, dan tanpa ribet.**
 
-First, run the development server:
+Kirim Satset adalah aplikasi berbasis **Next.js** yang memungkinkan pengguna mengunggah dan membagikan file melalui tautan unik. Dibangun dengan teknologi modern seperti **Supabase**, **React 19**, dan **Tailwind CSS v4**, aplikasi ini menawarkan pengalaman berbagi file yang cepat, responsif, dan mudah digunakan.
+
+## 🌐 Live Demo
+
+**Website:** https://kirim-satset-app.vercel.app
+
+---
+
+## ✨ Fitur
+
+- 📤 Upload file dengan drag & drop
+- 🔗 Generate link berbagi secara otomatis
+- ☁️ Penyimpanan file menggunakan Supabase
+- ⚡ Performa tinggi dengan Next.js 16
+- 📱 Responsive untuk desktop maupun mobile
+- 🌙 Dukungan Dark Mode
+- 🎨 UI modern menggunakan shadcn/ui
+- 🔔 Notifikasi interaktif menggunakan Sonner
+- ✨ Animasi halus dengan Framer Motion
+- ✅ Validasi data menggunakan Zod
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui
+- Radix UI
+- Framer Motion
+- Lucide React
+
+### Backend & Database
+
+- Supabase
+- NanoID
+
+### Utilities
+
+- React Dropzone
+- Zod
+- clsx
+- class-variance-authority
+- tailwind-merge
+- next-themes
+
+---
+
+## 📂 Struktur Project
+
+```text
+kirimsatset/
+│
+├── app/
+├── components/
+├── lib/
+├── hooks/
+├── public/
+├── styles/
+├── types/
+├── utils/
+│
+├── package.json
+├── tsconfig.json
+├── next.config.ts
+└── README.md
+```
+
+> Struktur dapat berbeda sesuai perkembangan proyek.
+
+---
+
+## 🚀 Instalasi
+
+Clone repository
+
+```bash
+git clone https://github.com/USERNAME/kirimsatset.git
+```
+
+Masuk ke folder project
+
+```bash
+cd kirimsatset
+```
+
+Install dependency
+
+```bash
+npm install
+```
+
+Jalankan development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka browser
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📦 Build Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Menjalankan hasil build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🔧 Environment Variables
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Buat file `.env.local`
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+Sesuaikan dengan project Supabase Anda.
+
+---
+
+## 📸 Screenshot
+
+Tambahkan screenshot aplikasi pada folder berikut:
+
+```text
+public/screenshots/home.png
+public/screenshots/upload.png
+```
+
+Lalu tampilkan di README:
+
+```markdown
+![Home](public/screenshots/home.png)
+```
+
+---
+
+## 📋 Scripts
+
+| Command | Deskripsi |
+|----------|-----------|
+| `npm run dev` | Menjalankan development server |
+| `npm run build` | Build aplikasi production |
+| `npm start` | Menjalankan hasil build |
+| `npm run lint` | Menjalankan ESLint |
+
+---
+
+## 🚀 Deployment
+
+Project ini dapat di-deploy menggunakan:
+
+- Vercel ⭐ (Direkomendasikan)
+- Netlify
+- Docker
+- VPS
+
+---
+
+## 🔮 Roadmap
+
+- [ ] Authentication
+- [ ] Password Protected Link
+- [ ] Expired Link
+- [ ] Download Counter
+- [ ] File Preview
+- [ ] Folder Sharing
+- [ ] Dashboard User
+- [ ] Admin Panel
+- [ ] Email Notification
+- [ ] Multi File Upload
+
+---
+
+## 🤝 Contributing
+
+Kontribusi selalu diterima.
+
+1. Fork repository
+2. Buat branch baru
+
+```bash
+git checkout -b feature/nama-fitur
+```
+
+3. Commit perubahan
+
+```bash
+git commit -m "Menambahkan fitur baru"
+```
+
+4. Push
+
+```bash
+git push origin feature/nama-fitur
+```
+
+5. Buat Pull Request
+
+---
+
+## 📄 License
+
+Project ini menggunakan lisensi **MIT**.
+
+---
+
+## 👨‍💻 Author
+
+**Kirim Satset**
+
+Dibuat menggunakan ❤️ dengan:
+
+- Next.js
+- React
+- Supabase
+- Tailwind CSS
+- shadcn/ui
+
+---
+
+## ⭐ Dukungan
+
+Jika project ini bermanfaat, jangan lupa memberikan ⭐ pada repository GitHub agar dapat membantu pengembangan proyek ini.
+
+Happy Coding! 🚀
