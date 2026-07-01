@@ -1,75 +1,80 @@
+# 🚀 Kirim Satset
 
-# 🚀 Kirim Satset App
+> **Kirim file dengan cepat, aman, dan tanpa ribet.**
 
-> Aplikasi pengiriman file dan pesan dengan cepat, sederhana, dan responsif.
+Kirim Satset adalah aplikasi berbasis **Next.js** yang memungkinkan pengguna mengunggah dan membagikan file melalui tautan unik. Dibangun dengan teknologi modern seperti **Supabase**, **React 19**, dan **Tailwind CSS v4**, aplikasi ini menawarkan pengalaman berbagi file yang cepat, responsif, dan mudah digunakan.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-Latest-61DAFB?logo=react)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)
+## 🌐 Live Demo
 
-## 📖 Tentang Project
-
-**Kirim Satset App** adalah aplikasi berbasis web yang dirancang untuk mempermudah proses pengiriman file maupun informasi secara cepat dengan tampilan modern, ringan, dan mudah digunakan.
-
-Website ini dibuat dengan fokus pada:
-
-- ⚡ Performa tinggi
-- 📱 Responsive di semua perangkat
-- 🎨 UI yang sederhana dan modern
-- 🚀 Deployment menggunakan Vercel
+**Website:** https://kirim-satset-app.vercel.app
 
 ---
 
 ## ✨ Fitur
 
-- 📤 Kirim data dengan cepat
-- 🎯 Tampilan modern & user-friendly
-- 📱 Responsive Mobile & Desktop
-- ⚡ Loading cepat
-- 🔒 Siap dikembangkan dengan autentikasi
-- 🌐 Deploy otomatis di Vercel
+- 📤 Upload file dengan drag & drop
+- 🔗 Generate link berbagi secara otomatis
+- ☁️ Penyimpanan file menggunakan Supabase
+- ⚡ Performa tinggi dengan Next.js 16
+- 📱 Responsive untuk desktop maupun mobile
+- 🌙 Dukungan Dark Mode
+- 🎨 UI modern menggunakan shadcn/ui
+- 🔔 Notifikasi interaktif menggunakan Sonner
+- ✨ Animasi halus dengan Framer Motion
+- ✅ Validasi data menggunakan Zod
 
 ---
 
-## 🖥️ Demo
+## 🛠️ Tech Stack
 
-**Live Website**
+### Frontend
 
-https://kirim-satset-app.vercel.app
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui
+- Radix UI
+- Framer Motion
+- Lucide React
+
+### Backend & Database
+
+- Supabase
+- NanoID
+
+### Utilities
+
+- React Dropzone
+- Zod
+- clsx
+- class-variance-authority
+- tailwind-merge
+- next-themes
 
 ---
 
 ## 📂 Struktur Project
 
 ```text
-kirim-satset-app/
+kirimsatset/
 │
+├── app/
+├── components/
+├── lib/
+├── hooks/
 ├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── pages/
-│   ├── hooks/
-│   ├── services/
-│   ├── utils/
-│   └── App.jsx
+├── styles/
+├── types/
+├── utils/
 │
 ├── package.json
-├── vite.config.js
+├── tsconfig.json
+├── next.config.ts
 └── README.md
 ```
 
----
-
-## 🛠️ Tech Stack
-
-- React.js
-- Vite
-- JavaScript (ES6+)
-- Tailwind CSS *(jika digunakan)*
-- Axios
-- React Router
-- Vercel
+> Struktur dapat berbeda sesuai perkembangan proyek.
 
 ---
 
@@ -78,13 +83,13 @@ kirim-satset-app/
 Clone repository
 
 ```bash
-git clone https://github.com/username/kirim-satset-app.git
+git clone https://github.com/USERNAME/kirimsatset.git
 ```
 
 Masuk ke folder project
 
 ```bash
-cd kirim-satset-app
+cd kirimsatset
 ```
 
 Install dependency
@@ -93,89 +98,150 @@ Install dependency
 npm install
 ```
 
-Jalankan project
+Jalankan development server
 
 ```bash
 npm run dev
 ```
 
-Build production
+Buka browser
+
+```
+http://localhost:3000
+```
+
+---
+
+## 📦 Build Production
 
 ```bash
 npm run build
 ```
 
-Preview hasil build
+Menjalankan hasil build
 
 ```bash
-npm run preview
+npm start
 ```
 
 ---
 
-## 📦 Deployment
+## 🔧 Environment Variables
 
-Project dapat dideploy menggunakan:
+Buat file `.env.local`
 
-- Vercel
-- Netlify
-- Firebase Hosting
-- GitHub Pages
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-Deploy paling mudah menggunakan **Vercel**.
+Sesuaikan dengan project Supabase Anda.
 
 ---
 
 ## 📸 Screenshot
 
-Tambahkan screenshot aplikasi di sini.
+Tambahkan screenshot aplikasi pada folder berikut:
 
 ```text
-README/images/home.png
+public/screenshots/home.png
+public/screenshots/upload.png
+```
+
+Lalu tampilkan di README:
+
+```markdown
+![Home](public/screenshots/home.png)
 ```
 
 ---
 
-## 📌 Roadmap
+## 📋 Scripts
 
-- [ ] Login User
-- [ ] Upload File
-- [ ] Riwayat Pengiriman
-- [ ] Notifikasi
-- [ ] Dark Mode
-- [ ] Dashboard Admin
-- [ ] Multi User
+| Command | Deskripsi |
+|----------|-----------|
+| `npm run dev` | Menjalankan development server |
+| `npm run build` | Build aplikasi production |
+| `npm start` | Menjalankan hasil build |
+| `npm run lint` | Menjalankan ESLint |
+
+---
+
+## 🚀 Deployment
+
+Project ini dapat di-deploy menggunakan:
+
+- Vercel ⭐ (Direkomendasikan)
+- Netlify
+- Docker
+- VPS
+
+---
+
+## 🔮 Roadmap
+
+- [ ] Authentication
+- [ ] Password Protected Link
+- [ ] Expired Link
+- [ ] Download Counter
+- [ ] File Preview
+- [ ] Folder Sharing
+- [ ] Dashboard User
+- [ ] Admin Panel
+- [ ] Email Notification
+- [ ] Multi File Upload
 
 ---
 
 ## 🤝 Contributing
 
-Kontribusi sangat terbuka.
-
-Langkah-langkah:
+Kontribusi selalu diterima.
 
 1. Fork repository
 2. Buat branch baru
+
+```bash
+git checkout -b feature/nama-fitur
+```
+
 3. Commit perubahan
-4. Push branch
+
+```bash
+git commit -m "Menambahkan fitur baru"
+```
+
+4. Push
+
+```bash
+git push origin feature/nama-fitur
+```
+
 5. Buat Pull Request
 
 ---
 
 ## 📄 License
 
-Project ini menggunakan lisensi **MIT License**.
+Project ini menggunakan lisensi **MIT**.
 
 ---
 
-## 👨‍💻 Developer
+## 👨‍💻 Author
 
-Dikembangkan dengan ❤️ oleh **Kirim Satset Team**
+**Kirim Satset**
+
+Dibuat menggunakan ❤️ dengan:
+
+- Next.js
+- React
+- Supabase
+- Tailwind CSS
+- shadcn/ui
 
 ---
 
-## ⭐ Support
+## ⭐ Dukungan
 
-Jika project ini bermanfaat, jangan lupa berikan ⭐ pada repository GitHub.
+Jika project ini bermanfaat, jangan lupa memberikan ⭐ pada repository GitHub agar dapat membantu pengembangan proyek ini.
 
-
+Happy Coding! 🚀
