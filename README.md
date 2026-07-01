@@ -1,36 +1,181 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+````markdown
+# 🚀 Kirim Satset App
 
-## Getting Started
+> Aplikasi pengiriman file dan pesan dengan cepat, sederhana, dan responsif.
 
-First, run the development server:
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![React](https://img.shields.io/badge/React-Latest-61DAFB?logo=react)
+![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)
+
+## 📖 Tentang Project
+
+**Kirim Satset App** adalah aplikasi berbasis web yang dirancang untuk mempermudah proses pengiriman file maupun informasi secara cepat dengan tampilan modern, ringan, dan mudah digunakan.
+
+Website ini dibuat dengan fokus pada:
+
+- ⚡ Performa tinggi
+- 📱 Responsive di semua perangkat
+- 🎨 UI yang sederhana dan modern
+- 🚀 Deployment menggunakan Vercel
+
+---
+
+## ✨ Fitur
+
+- 📤 Kirim data dengan cepat
+- 🎯 Tampilan modern & user-friendly
+- 📱 Responsive Mobile & Desktop
+- ⚡ Loading cepat
+- 🔒 Siap dikembangkan dengan autentikasi
+- 🌐 Deploy otomatis di Vercel
+
+---
+
+## 🖥️ Demo
+
+**Live Website**
+
+https://kirim-satset-app.vercel.app
+
+---
+
+## 📂 Struktur Project
+
+```text
+kirim-satset-app/
+│
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── hooks/
+│   ├── services/
+│   ├── utils/
+│   └── App.jsx
+│
+├── package.json
+├── vite.config.js
+└── README.md
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- React.js
+- Vite
+- JavaScript (ES6+)
+- Tailwind CSS *(jika digunakan)*
+- Axios
+- React Router
+- Vercel
+
+---
+
+## 🚀 Instalasi
+
+Clone repository
+
+```bash
+git clone https://github.com/username/kirim-satset-app.git
+```
+
+Masuk ke folder project
+
+```bash
+cd kirim-satset-app
+```
+
+Install dependency
+
+```bash
+npm install
+```
+
+Jalankan project
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Preview hasil build
 
-## Learn More
+```bash
+npm run preview
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Project dapat dideploy menggunakan:
 
-## Deploy on Vercel
+- Vercel
+- Netlify
+- Firebase Hosting
+- GitHub Pages
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy paling mudah menggunakan **Vercel**.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📸 Screenshot
+
+Tambahkan screenshot aplikasi di sini.
+
+```text
+README/images/home.png
+```
+
+---
+
+## 📌 Roadmap
+
+- [ ] Login User
+- [ ] Upload File
+- [ ] Riwayat Pengiriman
+- [ ] Notifikasi
+- [ ] Dark Mode
+- [ ] Dashboard Admin
+- [ ] Multi User
+
+---
+
+## 🤝 Contributing
+
+Kontribusi sangat terbuka.
+
+Langkah-langkah:
+
+1. Fork repository
+2. Buat branch baru
+3. Commit perubahan
+4. Push branch
+5. Buat Pull Request
+
+---
+
+## 📄 License
+
+Project ini menggunakan lisensi **MIT License**.
+
+---
+
+## 👨‍💻 Developer
+
+Dikembangkan dengan ❤️ oleh **Kirim Satset Team**
+
+---
+
+## ⭐ Support
+
+Jika project ini bermanfaat, jangan lupa berikan ⭐ pada repository GitHub.
+
+````
