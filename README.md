@@ -1,4 +1,4 @@
-````markdown
+
 # 🚀 Kirim Satset App
 
 > Aplikasi pengiriman file dan pesan dengan cepat, sederhana, dan responsif.
@@ -178,4 +178,4 @@ Dikembangkan dengan ❤️ oleh **Kirim Satset Team**
 
 Jika project ini bermanfaat, jangan lupa berikan ⭐ pada repository GitHub.
 
-````
+
