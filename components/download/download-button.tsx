@@ -33,7 +33,7 @@ const handleDownload = async () => {
 };
 
   return (
-    <Button className="cursor-pointer" onClick={handleDownload} disabled={loading}>
+    <Button className="cursor-pointer w-full sm:w-fit" onClick={handleDownload} disabled={loading}>
       {loading ? "Downloading..." : "Download"}
     </Button>
   );

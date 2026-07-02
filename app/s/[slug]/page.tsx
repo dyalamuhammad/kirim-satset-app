@@ -59,15 +59,15 @@ export default async function DownloadPage({ params }: Props) {
             {files?.map((file) => (
               <div
                 key={file.id}
-                className="flex items-center justify-between rounded-xl border bg-background p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-0 items-center justify-between rounded-xl border bg-background p-1 sm:p-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
               >
-                <div className="flex items-center gap-4">
+                <div className="flex w-full items-center gap-4">
                   <div className="rounded-lg bg-primary/10 p-3">
                     <FileText className="h-6 w-6 text-primary" />
                   </div>
 
-                  <div>
-                    <p className="font-semibold">{file.name}</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-semibold truncate w-full text-xs sm:text-base">{file.name}</p>
 
                     <p className="text-sm text-muted-foreground">
                       {(file.size / 1024 / 1024).toFixed(2)} MB
