@@ -18,9 +18,30 @@ export default function UploadDropzone() {
   const [status, setStatus] = useState("");
   const [shareUrl, setShareUrl] = useState("");
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    disabled: isUploading,
-    onDrop: (acceptedFiles) => {
-      setFiles((prev) => [...prev, ...acceptedFiles]);
+    multiple: true,
+  disabled: isUploading,
+   onDrop: (acceptedFiles) => {
+      setFiles((prev) => {
+        const existing = new Set(
+          prev.map((file) => `${file.name}-${file.size}`)
+        );
+
+        const newFiles = acceptedFiles.filter(
+          (file) => !existing.has(`${file.name}-${file.size}`)
+        );
+
+        const duplicateCount = acceptedFiles.length - newFiles.length;
+
+        if (duplicateCount > 0) {
+          toast.error(
+            duplicateCount === 1
+              ? "File sudah ada."
+              : `${duplicateCount} file sudah ada.`
+          );
+        }
+
+        return [...prev, ...newFiles];
+      });
     },
   });
 
@@ -44,11 +65,13 @@ export default function UploadDropzone() {
       console.error(error);
       setProgress(0);
       setStatus("");
-
+      
       toast.error("Upload gagal", {
         description: "Terjadi kesalahan saat mengunggah file. Silakan coba lagi.",
       });
     } finally {
+      setProgress(0);
+      setStatus("");
       setIsUploading(false);
     }
   };
@@ -108,7 +131,9 @@ export default function UploadDropzone() {
             {isUploading ? "Uploading..." : `Upload ${files.length} File${files.length > 1 ? "s" : ""}`}
           </Button>
           )}
-          <Progress value={progress} className="mt-4" />
+          {isUploading ?
+            <Progress value={progress} className="mt-4" /> : ""
+          }
 
       <p className="mt-2 text-center text-sm text-muted-foreground">
         {status}

@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import ShareQrCode from "./share-qr-code";
 
 type Props = {
   shareUrl: string;
@@ -21,6 +22,7 @@ export default function UploadSuccess({
     <div className="space-y-6 text-center">
       <div>
         <h2 className="text-2xl font-bold">🎉 Upload Berhasil</h2>
+        <ShareQrCode value={shareUrl} />
         <p className="text-muted-foreground mt-2">
           Bagikan link berikut ke penerima.
         </p>
