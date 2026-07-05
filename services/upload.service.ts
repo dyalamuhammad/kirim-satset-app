@@ -1,5 +1,6 @@
 import { createUpload, deleteFolder, deleteUpload, saveFiles, updateUpload } from "@/app/actions/upload";
 import {  uploadFile } from "./storage.service";
+import { createArchiveJob } from "@/app/actions/archive";
 
 export async function upload(files: File[], onProgress?: (progress: number, status: string) => void) {
 onProgress?.(10, "Membuat upload...");
@@ -28,7 +29,10 @@ onProgress?.(10, "Membuat upload...");
 
     await saveFiles(uploadId, uploadedFiles);
     onProgress?.(95, "Menyelesaikan upload...");
-    await updateUpload(uploadId, totalSize);
+    await updateUpload(uploadId, totalSize, files.length);
+    if (files.length > 1) {
+      await createArchiveJob(uploadId);
+    }
     onProgress?.(100, "Selesai");
 
     return `${window.location.origin}/s/${result.slug}`;

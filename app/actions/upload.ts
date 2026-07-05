@@ -47,12 +47,14 @@ export async function saveFiles(
 
 export async function updateUpload(
   uploadId: string,
-  totalSize: number
+  totalSize: number,
+  totalFiles: number
 ) {
   const { error } = await supabaseAdmin
     .from("uploads")
     .update({
       total_size: totalSize,
+      is_archive: totalFiles > 1,
     })
     .eq("id", uploadId);
 
