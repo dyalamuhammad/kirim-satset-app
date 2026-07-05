@@ -31,7 +31,10 @@ onProgress?.(10, "Membuat upload...");
     await updateUpload(uploadId, totalSize);
     onProgress?.(100, "Selesai");
 
-    return `${window.location.origin}/s/${result.slug}`;
+    return {
+      uploadId,
+      shareUrl: `${window.location.origin}/s/${result.slug}`,
+    };
   } catch (error) {
     if (uploadId) {
       await deleteFolder(uploadId);

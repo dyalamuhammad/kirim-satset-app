@@ -3,13 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ShareQrCode from "./share-qr-code";
+import PasswordProtection from "./password-protection";
 
 type Props = {
+  uploadId: string;
   shareUrl: string;
   onReset: () => void;
 };
 
 export default function UploadSuccess({
+  uploadId,
   shareUrl,
   onReset,
 }: Props) {
@@ -23,6 +26,7 @@ export default function UploadSuccess({
       <div>
         <h2 className="text-2xl font-bold">🎉 Upload Berhasil</h2>
         <ShareQrCode value={shareUrl} />
+        <PasswordProtection uploadId={uploadId} />
         <p className="text-muted-foreground mt-2">
           Bagikan link berikut ke penerima.
         </p>

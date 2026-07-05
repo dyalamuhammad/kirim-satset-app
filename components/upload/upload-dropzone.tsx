@@ -17,6 +17,7 @@ export default function UploadDropzone() {
   const [progress, setProgress] = useState(0);
   const [status, setStatus] = useState("");
   const [shareUrl, setShareUrl] = useState("");
+  const [uploadId, setUploadId] = useState("");
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     multiple: true,
   disabled: isUploading,
@@ -51,7 +52,7 @@ export default function UploadDropzone() {
     try {
       setIsUploading(true);
 
-      const shareUrl = await upload(files, (progress, status) => {
+      const result = await upload(files, (progress, status) => {
         setProgress(progress);
         setStatus(status);
       });
@@ -59,7 +60,8 @@ export default function UploadDropzone() {
       setStatus("Membuat upload...");
       toast.success("Upload berhasil!");
 
-      setShareUrl(shareUrl);
+      setShareUrl(result.shareUrl);
+      setUploadId(result.uploadId);
       setFiles([]);
     } catch (error) {
       console.error(error);
@@ -79,8 +81,12 @@ export default function UploadDropzone() {
   if (shareUrl) {
     return (
       <UploadSuccess
+        uploadId={uploadId}
         shareUrl={shareUrl}
-        onReset={() => setShareUrl("")}
+        onReset={() => {
+          setUploadId("");
+          setShareUrl("");
+        }}
       />
     );
   }

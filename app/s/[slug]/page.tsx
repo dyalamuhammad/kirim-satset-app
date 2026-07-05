@@ -2,6 +2,8 @@ import { Download, FileText, FolderOpen } from "lucide-react";
 import DownloadButton from "@/components/download/download-button";
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
+import PasswordGate from "@/components/download/password-gate";
+import { cookies } from "next/headers";
 
 type Props = {
   params: Promise<{
@@ -14,7 +16,7 @@ export default async function DownloadPage({ params }: Props) {
 
   const { data: upload } = await supabaseAdmin
     .from("uploads")
-    .select("id, slug")
+    .select("*")
     .eq("slug", slug)
     .single();
 
@@ -29,6 +31,15 @@ export default async function DownloadPage({ params }: Props) {
 
   const totalSize =
     files?.reduce((acc, file) => acc + file.size, 0) ?? 0;
+
+    const cookieStore = await cookies();
+
+const verified =
+  cookieStore.get(`upload_${upload.id}`)?.value === "verified";
+
+  if (upload.password_hash && !verified) {
+    return <PasswordGate uploadId={upload.id} />;
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-background via-background to-muted/30">
