@@ -14,6 +14,7 @@ type Props = {
 export default function PasswordProtection({ uploadId }: Props) {
   const [password, setPassword] = useState("");
   const [isPending, startTransition] = useTransition();
+  const [isProtected, setIsProtected] = useState(false);
 
   const handleSave = () => {
     if (password.length < 4) {
@@ -21,9 +22,14 @@ export default function PasswordProtection({ uploadId }: Props) {
       return;
     }
 
+    
+
     startTransition(async () => {
       try {
         await setUploadPassword(uploadId, password);
+
+        setIsProtected(true);
+        setPassword("");
 
         toast.success("Password berhasil diaktifkan.");
 
@@ -45,19 +51,24 @@ export default function PasswordProtection({ uploadId }: Props) {
         </p>
       </div>
 
-      <Input
+     <Input
         type="password"
         placeholder="Masukkan password"
         value={password}
+        disabled={isProtected || isPending}
         onChange={(e) => setPassword(e.target.value)}
-      />
+        />
 
-      <Button
+        <Button
         onClick={handleSave}
-        disabled={isPending}
+        disabled={isPending || isProtected}
         className="w-full"
-      >
-        {isPending ? "Menyimpan..." : "Aktifkan Password"}
+        >
+       {isProtected
+        ? "🔒 Password Aktif"
+        : isPending
+        ? "Menyimpan..."
+        : "Aktifkan Password"}
       </Button>
     </div>
   );

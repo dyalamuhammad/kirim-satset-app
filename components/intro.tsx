@@ -22,7 +22,7 @@ export default function Intro({
     <AnimatePresence mode="wait">
       {showIntro ? (
        <motion.div
-        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white"
+        className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-background"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
