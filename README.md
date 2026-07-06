@@ -22,6 +22,8 @@ Kirim Satset adalah aplikasi berbasis **Next.js** yang memungkinkan pengguna men
 - 🔔 Notifikasi interaktif menggunakan Sonner
 - ✨ Animasi halus dengan Framer Motion
 - ✅ Validasi data menggunakan Zod
+- Genenete QR dan share untuk akses link via scan
+- Aktivasi Password untuk akses link
 
 ---
 
@@ -51,6 +53,8 @@ Kirim Satset adalah aplikasi berbasis **Next.js** yang memungkinkan pengguna men
 - class-variance-authority
 - tailwind-merge
 - next-themes
+- QR Code
+- ByCrypt
 
 ---
 
@@ -141,17 +145,8 @@ Sesuaikan dengan project Supabase Anda.
 
 ## 📸 Screenshot
 
-Tambahkan screenshot aplikasi pada folder berikut:
-
 ```text
-public/screenshots/home.png
-public/screenshots/upload.png
-```
-
-Lalu tampilkan di README:
-
-```markdown
-![Home](public/screenshots/home.png)
+![Screenshot](assets/screenshot.png)
 ```
 
 ---
