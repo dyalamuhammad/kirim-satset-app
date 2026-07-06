@@ -10,6 +10,7 @@ import { upload } from "@/services/upload.service";
 import UploadSuccess from "./upload-success";
 import { toast } from "sonner";
 import { Progress } from "../ui/progress";
+import { validateFiles } from "@/utils/upload-validation";
 
 export default function UploadDropzone() {
   const [files, setFiles] = useState<File[]>([]);
@@ -18,33 +19,42 @@ export default function UploadDropzone() {
   const [status, setStatus] = useState("");
   const [shareUrl, setShareUrl] = useState("");
   const [uploadId, setUploadId] = useState("");
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    multiple: true,
+const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  multiple: true,
   disabled: isUploading,
-   onDrop: (acceptedFiles) => {
-      setFiles((prev) => {
-        const existing = new Set(
-          prev.map((file) => `${file.name}-${file.size}`)
+  onDrop: (acceptedFiles) => {
+    setFiles((prev) => {
+      const existing = new Set(
+        prev.map((file) => `${file.name}-${file.size}`)
+      );
+
+      const newFiles = acceptedFiles.filter(
+        (file) => !existing.has(`${file.name}-${file.size}`)
+      );
+
+      const duplicateCount = acceptedFiles.length - newFiles.length;
+
+      if (duplicateCount > 0) {
+        toast.error(
+          duplicateCount === 1
+            ? "File sudah ada."
+            : `${duplicateCount} file sudah ada.`
         );
+      }
 
-        const newFiles = acceptedFiles.filter(
-          (file) => !existing.has(`${file.name}-${file.size}`)
-        );
+      const nextFiles = [...prev, ...newFiles];
 
-        const duplicateCount = acceptedFiles.length - newFiles.length;
+      const error = validateFiles(nextFiles);
 
-        if (duplicateCount > 0) {
-          toast.error(
-            duplicateCount === 1
-              ? "File sudah ada."
-              : `${duplicateCount} file sudah ada.`
-          );
-        }
+      if (error) {
+        toast.error(error);
+        return prev; // batalkan update state
+      }
 
-        return [...prev, ...newFiles];
-      });
-    },
-  });
+      return nextFiles;
+    });
+  },
+});
 
   const handleUpload = async () => {
     if (files.length === 0) return;
@@ -90,6 +100,7 @@ export default function UploadDropzone() {
       />
     );
   }
+ 
 
   return (
     <div className="">
@@ -127,7 +138,12 @@ export default function UploadDropzone() {
       </p>
             </div>
           </div>
-          <FileList files={files} />
+          <FileList 
+            files={files}  isUploading={isUploading}
+            onRemove={(file) => {
+              setFiles((prev) => prev.filter((f) => f !== file));
+            }} 
+          />
           {files.length > 0 && (
             <Button
             className="mt-4 w-full"
