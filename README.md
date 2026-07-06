@@ -148,8 +148,8 @@ Sesuaikan dengan project Supabase Anda.
 Tambahkan screenshot aplikasi pada folder berikut:
 
 ```text
-public/screenshots/home.png
-public/screenshots/upload.png
+<img width="1012" height="723" alt="Screenshot 2026-07-04 191831" src="https://github.com/user-attachments/assets/e03480c3-0a68-4250-9864-9a972a74f916" />
+<img width="800" height="549" alt="Screenshot 2026-07-04 201735" src="https://github.com/user-attachments/assets/ee8ee362-0d70-4e92-a950-773823189fd2" />
 ```
 
 Lalu tampilkan di README:
