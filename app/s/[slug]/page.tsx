@@ -29,6 +29,20 @@ export default async function DownloadPage({ params }: Props) {
     .select("*")
     .eq("upload_id", upload.id);
 
+    if (upload.is_deleted) {
+  return (
+    <div className="mx-auto mt-20 max-w-lg text-center">
+      <h1 className="text-2xl font-bold">
+        File tidak tersedia
+      </h1>
+
+      <p className="mt-2 text-muted-foreground">
+        File ini sudah tidak dapat diakses.
+      </p>
+    </div>
+  );
+}
+
   const totalSize =
     files?.reduce((acc, file) => acc + file.size, 0) ?? 0;
 
@@ -86,7 +100,11 @@ const verified =
                   </div>
                 </div>
 
-                <DownloadButton path={file.storage_path} />
+                <DownloadButton 
+                  path={file.storage_path} 
+                  uploadId={upload.id}
+                  deleteAfterFirstDownload={upload.delete_after_first_download}
+                />
               </div>
             ))}
           </div>

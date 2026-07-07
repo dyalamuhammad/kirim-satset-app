@@ -1,5 +1,6 @@
 "use client";
 
+import { markUploadAsDeleted } from "@/app/actions/delete-after-first-download";
 import { getDownloadUrl } from "@/app/actions/download";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -7,9 +8,15 @@ import { toast } from "sonner";
 
 type Props = {
   path: string;
+  uploadId: string; // or number, depending on your data
+  deleteAfterFirstDownload: boolean;
 };
 
-export default function DownloadButton({ path }: Props) {
+export default function DownloadButton({ 
+  path, 
+  uploadId,
+  deleteAfterFirstDownload, 
+}: Props) {
     const [loading, setLoading] = useState(false);
 
 
@@ -21,9 +28,15 @@ const handleDownload = async () => {
 
     const url = await getDownloadUrl(path);
 
+     if (deleteAfterFirstDownload) {
+      await markUploadAsDeleted(uploadId);
+      setConsumed(true);
+    }
+
+    
+
     toast.success("Download dimulai.");
 
-    window.location.href = url;
   } catch (error) {
     console.error(error);
     toast.error("Gagal mengunduh file.");
@@ -31,10 +44,15 @@ const handleDownload = async () => {
     setLoading(false);
   }
 };
+const [consumed, setConsumed] = useState(false);
 
   return (
-    <Button className="cursor-pointer w-full sm:w-fit" onClick={handleDownload} disabled={loading}>
-      {loading ? "Downloading..." : "Download"}
+    <Button className="cursor-pointer w-full sm:w-fit" onClick={handleDownload} disabled={loading || consumed}>
+      {loading
+  ? "Downloading..."
+  : consumed
+  ? "Downloaded"
+  : "Download"}
     </Button>
   );
 }

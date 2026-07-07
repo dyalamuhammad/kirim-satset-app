@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import ShareQrCode from "./share-qr-code";
 import PasswordProtection from "./password-protection";
+import DeleteAfterFirstDownload from "./delete-after-first-download";
 
 type Props = {
   uploadId: string;
@@ -27,6 +28,7 @@ export default function UploadSuccess({
         <h2 className="text-2xl font-bold">🎉 Upload Berhasil</h2>
         <ShareQrCode value={shareUrl} />
         <PasswordProtection uploadId={uploadId} />
+        <DeleteAfterFirstDownload uploadId={uploadId} />
         <p className="text-muted-foreground mt-2">
           Bagikan link berikut ke penerima.
         </p>
