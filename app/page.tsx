@@ -23,7 +23,7 @@ export default function Home() {
           </Card>
 
           <div className="text-muted-foreground text-center text-sm">
-            Maksimal ukuran file 2 GB
+            Maksimal ukuran file 100 Mb
           </div>
         </div>
       </main>
