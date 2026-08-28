@@ -15,15 +15,22 @@ export default function OpenFileButton({ path }: Props) {
   const [loading, setLoading] = useState(false);
 
   const handleOpen = async () => {
-    if (loading) return;
+    const newWindow = window.open("", "_blank");
+
+    if (!newWindow) {
+      toast.error("Browser memblokir tab baru.");
+      return;
+    }
 
     try {
       setLoading(true);
 
       const url = await getOpenUrl(path);
 
-      window.open(url, "_blank", "noopener,noreferrer");
+      newWindow.location.href = url;
     } catch (error) {
+      newWindow.close();
+
       console.error(error);
       toast.error("Gagal membuka file.");
     } finally {
