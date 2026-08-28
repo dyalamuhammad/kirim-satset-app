@@ -1,9 +1,10 @@
-import { Download, FileText, FolderOpen } from "lucide-react";
+import { FileText, FolderOpen } from "lucide-react";
 import DownloadButton from "@/components/download/download-button";
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import PasswordGate from "@/components/download/password-gate";
 import { cookies } from "next/headers";
+import OpenFileButton from "@/components/download/open-file-button";
 
 type Props = {
   params: Promise<{
@@ -100,11 +101,15 @@ const verified =
                   </div>
                 </div>
 
-                <DownloadButton 
-                  path={file.storage_path} 
-                  uploadId={upload.id}
-                  deleteAfterFirstDownload={upload.delete_after_first_download}
-                />
+                <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
+                  <OpenFileButton path={file.storage_path} />
+
+                  <DownloadButton
+                    path={file.storage_path}
+                    uploadId={upload.id}
+                    deleteAfterFirstDownload={upload.delete_after_first_download}
+                  />
+                </div>
               </div>
             ))}
           </div>

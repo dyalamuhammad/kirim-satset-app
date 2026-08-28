@@ -15,3 +15,15 @@ export async function getDownloadUrl(path: string) {
 
   return data.signedUrl;
 }
+
+export async function getOpenUrl(path: string) {
+  const { data, error } = await supabaseAdmin.storage
+    .from("uploads")
+    .createSignedUrl(path, 60);
+
+  if (error) {
+    throw error;
+  }
+
+  return data.signedUrl;
+}
