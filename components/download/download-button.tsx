@@ -28,11 +28,17 @@ const handleDownload = async () => {
 
     const url = await getDownloadUrl(path);
 
-     if (deleteAfterFirstDownload) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    if (deleteAfterFirstDownload) {
       await markUploadAsDeleted(uploadId);
       setConsumed(true);
     }
-
     
 
     toast.success("Download dimulai.");
