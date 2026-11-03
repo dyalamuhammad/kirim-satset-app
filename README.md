@@ -87,7 +87,7 @@ kirimsatset/
 Clone repository
 
 ```bash
-git clone https://github.com/USERNAME/kirimsatset.git
+git clone https://github.com/dyalamuhammad/kirim-satset-app.git
 ```
 
 Masuk ke folder project
