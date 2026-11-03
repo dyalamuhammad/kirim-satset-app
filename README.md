@@ -176,15 +176,15 @@ Project ini dapat di-deploy menggunakan:
 ## 🔮 Roadmap
 
 - [ ] Authentication
-- [ ] Password Protected Link
+- [x] Password Protected Link
 - [ ] Expired Link
 - [ ] Download Counter
-- [ ] File Preview
+- [x] File Preview
 - [ ] Folder Sharing
 - [ ] Dashboard User
 - [ ] Admin Panel
 - [ ] Email Notification
-- [ ] Multi File Upload
+- [x] Multi File Upload
 
 ---
 
